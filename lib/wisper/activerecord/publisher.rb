@@ -6,9 +6,9 @@ module Wisper
 
         include Wisper::Publisher
 
-        after_create :publish_creation
-        after_update :publish_update
-        after_destroy :publish_destroy
+        after_commit :publish_creation, on: :create
+        after_commit :publish_update, on: :update
+        after_commit :publish_destroy, on: :destroy
 
       end
 
